@@ -8,9 +8,26 @@
     <title>Exercise 3</title>
 </head>
 <body>
-    <center>
+    
         <h1>Daftar Planet</h1>
-    </center>
+
+    <table class="table table-hover" id="tablePlanet">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Diameter</th>
+                <th>Rotation</th>
+                <th>Orbital</th>
+                <th>Climate</th>
+                <th>Gravity</th>
+                <th>Terrain</th>
+                <th>Surface</th>
+                <th>Poulation</th>
+            </tr>
+        </thead>
+        <tbody id="dataPlanet"></tbody>
+    </table>
+    
     <div id="demo"></div> 
 </body>
 <script>
@@ -19,9 +36,19 @@ xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
        var output = "";
-       var cars = JSON.parse(xhttp.responseText).results; 
-       for (x of cars) {
-        output = output + (x.name + x.diameter + x.rotation_period + x.orbital_period + x.climate + x.gravity + x.terrain + x.surface_water + x.population + "<br>");
+       var Planet = JSON.parse(xhttp.responseText).results; 
+       for (x of Planet) {
+        output = output 
+          + (x.name
+          + x.diameter 
+          + x.rotation_period 
+          + x.orbital_period 
+          + x.climate 
+          + x.gravity 
+          + x.terrain 
+          + x.surface_water 
+          + x.population 
+          + "<br>");
        }
        document.getElementById("demo").innerHTML = output
 
