@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Exercise 3</title>
 </head>
 <body>
     <center>
         <h1>Daftar Planet</h1>
     </center>
+    <div id="demo"></div> 
 </body>
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       var output = "";
+       var cars = JSON.parse(xhttp.responseText).results; 
+       for (x of cars) {
+        output = output + (x.name + x.diameter + x.rotation_period + x.orbital_period + x.climate + x.gravity + x.terrain + x.surface_water + x.population + "<br>");
+       }
+       document.getElementById("demo").innerHTML = output
+
+
+    }
+};
+xhttp.open("GET", "https://swapi.co/api/planets/", true);
+xhttp.send();
+</script>
 </html>
